@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  php:
+    build: $PWD
+    volumes:
+      - ./config/php.ini:/usr/local/etc/php/php.ini
+      - ./html:/var/www/html
+    ports:
+      - 8080:80
+  mailhog:
+    image: mailhog/mailhog
+    restart: always
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+
+volumes:
+  db-data:
